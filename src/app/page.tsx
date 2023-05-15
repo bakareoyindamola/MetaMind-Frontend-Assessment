@@ -1,95 +1,59 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import React from 'react'
+import styled from 'styled-components'
+import {AppVariables, useApp} from "@component/context";
+import {TaskListing} from "@component/app/TaskListing";
+import {Modals} from "@component/app/Modals";
 
 export default function Home() {
+    const { dispatch: AppDispatch } = useApp()
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Wrapper>
+      <HeaderWrapper>
+          <HeaderText>Tasks</HeaderText>
+
+          <HeaderButton
+              onClick={() => AppDispatch({ type: AppVariables.MODAL, modalValue: true, currentModal: AppVariables.ADD_TASK })}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+              Create new task
+          </HeaderButton>
+      </HeaderWrapper>
+      <Modals />
+      <TaskListing />
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.main``
+
+const HeaderWrapper = styled.div`
+  padding: 0 20px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+  box-shadow: rgba(44, 19, 56, 0.13) 0 2px 6px 0;
+  position: sticky;
+  width: 100%;
+`
+
+const HeaderText = styled.h2`
+  color: rgb(44, 19, 56);
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+`
+
+const HeaderButton = styled.button`
+  font-size: 14px;
+  line-height: normal;
+  height: 36px;
+  padding: 0 16px 0 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  background-color: rgb(201, 94, 190);
+`

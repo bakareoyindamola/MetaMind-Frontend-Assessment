@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+##  MetaMind Frontend Assessment
 
-## Getting Started
+*Requirements:*
+- You’ll need to have Node >= 10.16 and yarn >= 3.0 on your machine.
 
-First, run the development server:
+*Begin*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Download the zip file from the email attachment.
+2. Unzip the file.
+3. Open the folder on your favourite code editor or IDE.
+4. Run `npm install` to install existing dependencies
+5. Run `npm run dev` and to visit the website. Happy Hacking!!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+A User can add task.
 
-## Learn More
+A User can edit each task if hover on each task list on the table.
 
-To learn more about Next.js, take a look at the following resources:
+A User can see only daily reports
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tools
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Next Js
+- Styled Components for styling
+- React context for managing state
 
-## Deploy on Vercel
+### Technical Details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Reason for the task data structure was to keep track of everything the user was doing.
+- I kept track of timestamp of when a user stops the timer
+- Saved the date created while also having updated at date.
